@@ -1,0 +1,16 @@
+{
+	"name": "redis-api",
+	"version": "0.0.10",
+	"private": true,
+	"module": "index.ts",
+	"type": "module",
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"redis": "^4.7.0"
+	}
+}

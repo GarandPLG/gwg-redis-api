@@ -1,0 +1,32 @@
+name: redis-dev
+services:
+  redis-stack:
+    image: redis/redis-stack:latest
+    container_name: redis-stack
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    networks:
+      - redis-net
+    volumes:
+      - redis-data:/data
+  redis-api:
+    image: gitea.garandplg.com/garands-world-game/gwg-redis-api:latest
+    container_name: redis-api
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    networks:
+      - redis-net
+    depends_on:
+      - redis-stack
+
+
+networks:
+  redis-net:
+    driver: bridge
+
+
+volumes:
+  redis-data:
